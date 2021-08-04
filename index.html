@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Vue test TODO list</title>
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <section>
+      <div class="container" id="app" v-cloak>
+         <h1 class="title">My TODO List</h1>
+         <form id="formAdd" class="formAdd">
+            <input 
+               type="text" id="addTask" 
+               placeholder="add task" 
+               class="addTask"
+               v-model="inputValue"
+               @keypress.enter="addNewtask"
+            />
+            <input 
+               type="submit" 
+               id="btnAdd" value="add" 
+               class="btnAdd"
+               @click.left.prevent="addNewtask"
+            />
+         </form>
+         <div class="row flexPosition">
+            <ul id="taskList" class="task" v-if="todoListItem.length">
+               <h2 class="subTitle">TODO list</h2>
+               <li class="task__item" v-for="(notes, i) in todoListItem">
+                  <input type="checkbox" class="checkbox" @change="addCompletedtask(i)">
+                  <span>{{ notes }}</span>
+               </li>
+            </ul>
+            <p v-else class="notTask">Your list is empty, add a task in the field above</p>
+            <ul id = "completedList" class="completed">
+               <h2 class="subTitle">Completed</h2>
+               <li class="completed__item" v-for="(cmd, i) in completedListItem">
+                  <span>{{ cmd }}</span>
+                  <a href="#" class="delete" @click.left.prevent="deleteCmdTask">delete</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </section>
+
+
+
+   <script src="https://unpkg.com/vue@next"></script>
+   <script src="js/script.js"></script>
+</body>
+</html>
