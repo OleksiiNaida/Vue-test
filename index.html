@@ -33,7 +33,7 @@
             <ul id="taskList" class="task" v-if="todoListItem.length">
                <h2 class="subTitle">TODO list</h2>
                <li class="task__item" v-for="(notes, i) in todoListItem">
-                  <input type="checkbox" class="checkbox" @change="addCompletedtask(i)">
+                  <input type="checkbox" class="checkbox" @change.prevent="addCompletedtask(i)">
                   <span>{{ notes }}</span>
                </li>
             </ul>
@@ -42,7 +42,7 @@
                <h2 class="subTitle">Completed</h2>
                <li class="completed__item" v-for="(cmd, i) in completedListItem">
                   <span>{{ cmd }}</span>
-                  <a href="#" class="delete" @click.left.prevent="deleteCmdTask">delete</a>
+                  <a href="#" class="delete" @click.left.prevent="deleteCmdTask(i)">delete</a>
                </li>
             </ul>
          </div>
