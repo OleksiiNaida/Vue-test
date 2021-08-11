@@ -33,8 +33,8 @@
             <ul id="taskList" class="task" v-if="todoListItem.length">
                <h2 class="subTitle">TODO list</h2>
                <li class="task__item" v-for="(notes, i) in todoListItem">
-                  <input type="checkbox" class="checkbox" @change.prevent="addCompletedtask(i)">
-                  <span>{{ notes }}</span>
+                  <input type="checkbox" class="checkbox" v-model="notes.completed" @change="addCompletedtask(i)">
+                  <span>{{ notes.taskName }}</span>
                </li>
             </ul>
             <p v-else class="notTask">Your list is empty, add a task in the field above</p>

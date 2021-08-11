@@ -7,18 +7,20 @@ const App = {
    methods: {
       addNewtask() {
          if(this.inputValue !== '') {
-            this.todoListItem.push(this.inputValue);
+            this.todoListItem.push({taskName:this.inputValue, completed: false});
             this.inputValue = '';
          }
       },
-      addCompletedtask(i) {
-         this.completedListItem.push(this.todoListItem[i]);
-         this.todoListItem.splice(i, 1);
+      addCompletedtask(i, type) {
+         if(this.todoListItem[i].completed) {
+            this.completedListItem.push(this.todoListItem[i].taskName);
+            this.todoListItem.splice(i, 1);
+         }
       },
       deleteCmdTask(i) {
          this.completedListItem.splice(i, 1);
       }
-   }
+   },
 }
 
 
